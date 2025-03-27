@@ -13,9 +13,11 @@ body {
 main {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-block: 80px;
+    row-gap: 20px;
 }
 
 /* MAIN ITSELF */
@@ -86,7 +88,7 @@ main {
 @keyframes red-winner-animation {
     50%{scale: 1.05}
     100%{scale: 1}
-};
+}
 
 .main-itself-inner-child-blue-winner {
     animation: 1s infinite blue-winner-animation;
@@ -99,4 +101,11 @@ main {
 @keyframes blue-winner-animation {
     50%{scale: 1.05}
     100%{scale: 1}
-};
+}
+
+/* TURN */
+
+.main-turn {
+    color: white;
+    font-size: 1.5rem;
+}

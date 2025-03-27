@@ -1,4 +1,6 @@
 const mainItself = document.querySelector('.main-itself');
+const turnText = document.querySelector('.main-turn');
+const restartButton = document.querySelector('#restartButton');
 
 // GAME
 let gameHasBeenWon = false;
@@ -18,30 +20,37 @@ function changeTurns() {
         turn.isClass = 'main-itself-inner-child-red-occupied';
         turn.isState = 'red-occupied';
         turn.winnerClass = 'main-itself-inner-child-red-winner';
+        turnText.textContent = 'It is red\'s turn';
     } else {
         turn.isClass = 'main-itself-inner-child-blue-occupied';
         turn.isState = 'blue-occupied';
         turn.winnerClass = 'main-itself-inner-child-blue-winner';
+        turnText.textContent = 'It is blue\'s turn';
     };
 };
 
 // ADDING THE ELEMENTS
 
-for (let i = 0; i < 7; i++) {
-    const columnElement = document.createElement('div');
-    columnElement.classList.add('main-itself-inner');
-
-    columnElement.addEventListener('click', () => handlingTheColumnElement(columnElement));
-
-    for (let iterator = 0; iterator < 6; iterator++) {
-        const columnElementChild = document.createElement('div');
-        columnElementChild.classList.add('main-itself-inner-child');
-        columnElementChild.setAttribute('data-child-state', 'empty');
-        columnElementChild.setAttribute('data-child-index', iterator);
-        columnElement.appendChild(columnElementChild);
+function addingTheElements() {
+    mainItself.innerHTML = '';
+    for (let i = 0; i < 7; i++) {
+        const columnElement = document.createElement('div');
+        columnElement.classList.add('main-itself-inner');
+    
+        columnElement.addEventListener('click', () => handlingTheColumnElement(columnElement));
+    
+        for (let iterator = 0; iterator < 6; iterator++) {
+            const columnElementChild = document.createElement('div');
+            columnElementChild.classList.add('main-itself-inner-child');
+            columnElementChild.setAttribute('data-child-state', 'empty');
+            columnElementChild.setAttribute('data-child-index', iterator);
+            columnElement.appendChild(columnElementChild);
+        };
+        mainItself.appendChild(columnElement);
     };
-    mainItself.appendChild(columnElement);
 };
+
+addingTheElements();
 
 // HANDLING THE COLUMN ELEMENT
 
@@ -112,7 +121,7 @@ function checkIfTheGamehasBeenWon() {
                         if (elementStates.elementCounter === 4) {
                             const winner = turn.isBluesTurn === false ? 'Red won the game.' : 'Blue won the game.';
 
-                            alert(winner);
+                            turnText.textContent = winner;
 
                             gameHasBeenWon = true;
                             disablingAndEnablingTheColumnElements();
@@ -130,7 +139,7 @@ function checkIfTheGamehasBeenWon() {
     };
 
     // CHECKING HORIZONTALLY
-    
+
 };
 
 // DISABLING AND ENABLING THE COLUMN ELEMENTS
@@ -146,3 +155,16 @@ function disablingAndEnablingTheColumnElements() {
         };
     };
 };
+
+// RESTARTING THE GAME
+
+function restartingTheGame() {
+    gameHasBeenWon = false;
+    disablingAndEnablingTheColumnElements();
+    addingTheElements();
+    turn.isBluesTurn = false;
+    changeTurns();
+};
+
+// INITIALIZING BUTTONS
+restartButton.addEventListener('click', restartingTheGame);
