@@ -52,7 +52,7 @@ main {
 }
 
 .main-itself-inner-child-red-occupied {
-    background-color: rgb(255, 83, 30);
+    background-color: rgb(255, 83, 30) !important;
     border-top: 1px solid rgba(255,255,255,0.2);
     border-bottom: 1px solid rgba(255,255,255,0.2);
     box-shadow: 0 0 2px black;
@@ -68,3 +68,31 @@ main {
 .main-itself-inner-child:last-of-type {
     margin-bottom: 0;
 }
+
+/* WINNER */
+
+.main-itself-inner-child-red-winner {
+    animation: 1s infinite red-winner-animation;
+    background-color: rgb(255, 83, 30);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 2px black;
+}
+
+@keyframes red-winner-animation {
+    50%{scale: 1.05}
+    100%{scale: 1}
+};
+
+.main-itself-inner-child-blue-winner {
+    animation: 1s infinite blue-winner-animation;
+    background-color: rgb(255, 83, 30);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 2px black;
+}
+
+@keyframes blue-winner-animation {
+    50%{scale: 1.05}
+    100%{scale: 1}
+};
