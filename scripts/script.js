@@ -112,9 +112,8 @@ function checkIfTheGamehasBeenWon() {
                         if (elementStates.elementCounter === 4) {
                             const winner = turn.isBluesTurn === false ? 'Red One the Game' : 'Blue Won the Game';
 
-                            columnElements[i].children[iterator].classList.add(turn.winnerClass);
-                            console.log(elementStates.elementIndex);
-                            return;
+                            console.log(winner);
+                            break;
                         };
                     } else {
                         elementStates.elementState = [];
