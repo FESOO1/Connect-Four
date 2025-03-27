@@ -128,6 +128,9 @@ function checkIfTheGamehasBeenWon() {
             };
         };
     };
+
+    // CHECKING HORIZONTALLY
+    
 };
 
 // DISABLING AND ENABLING THE COLUMN ELEMENTS
