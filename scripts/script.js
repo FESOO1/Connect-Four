@@ -110,9 +110,12 @@ function checkIfTheGamehasBeenWon() {
                         elementStates.elementCounter++;
 
                         if (elementStates.elementCounter === 4) {
-                            const winner = turn.isBluesTurn === false ? 'Red One the Game' : 'Blue Won the Game';
+                            const winner = turn.isBluesTurn === false ? 'Red won the game.' : 'Blue won the game.';
 
-                            console.log(winner);
+                            alert(winner);
+
+                            gameHasBeenWon = true;
+                            disablingAndEnablingTheColumnElements();
                             break;
                         };
                     } else {
@@ -123,6 +126,20 @@ function checkIfTheGamehasBeenWon() {
                     };
                 };
             };
+        };
+    };
+};
+
+// DISABLING AND ENABLING THE COLUMN ELEMENTS
+
+function disablingAndEnablingTheColumnElements() {
+    const columnElements = mainItself.querySelectorAll('.main-itself-inner');
+
+    for (const columnElement of columnElements) {
+        if (gameHasBeenWon === false) {
+            columnElement.classList.remove('main-itself-inner-inactive');
+        } else {
+            columnElement.classList.add('main-itself-inner-inactive');
         };
     };
 };
